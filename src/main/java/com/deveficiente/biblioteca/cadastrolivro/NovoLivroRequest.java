@@ -28,7 +28,9 @@ public class NovoLivroRequest {
 	public String toString() {
 		return "NovoLivroRequest [titulo=" + titulo + ", preco=" + preco + ", isbn=" + isbn + "]";
 	}
-	
-	
-	
+
+
+	public Livro toModel() {
+		return  new Livro(titulo, preco, isbn);
+	}
 }
