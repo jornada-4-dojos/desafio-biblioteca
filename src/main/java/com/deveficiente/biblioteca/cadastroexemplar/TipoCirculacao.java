@@ -1,5 +1,5 @@
 package com.deveficiente.biblioteca.cadastroexemplar;
 
-public enum Tipo {
+public enum TipoCirculacao {
     LIVRE, RESTRITO;
 }

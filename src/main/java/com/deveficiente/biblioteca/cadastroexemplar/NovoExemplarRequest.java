@@ -2,6 +2,12 @@ package com.deveficiente.biblioteca.cadastroexemplar;
 
 public class NovoExemplarRequest {
 
-    private Tipo tipo;
+    private TipoCirculacao tipoCirculacao;
     private String isbn;
+    
+	public Exemplar toModel() {
+		
+		return new Exemplar(tipoCirculacao, isbn);
+	}
+    
 }

@@ -1,11 +1,10 @@
 package com.deveficiente.biblioteca.cadastroexemplar;
 
-import org.springframework.web.bind.annotation.PathVariable;
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 @RestController
 public class NovoExemplarController {
@@ -18,9 +17,9 @@ public class NovoExemplarController {
 
 	 */
 
-	@PostMapping("/livros/{isbn}/exemplares")
-	public String cria(@PathVariable @RequestBody @Valid NovoExemplarRequest request) {
-		//TODO: process POST request
+	@PostMapping("/livros/exemplares")
+	public String cria(@RequestBody @Valid NovoExemplarRequest request) {
+		var novoLivro = request.toModel(); 
 
 		return "craindo";
 	}
