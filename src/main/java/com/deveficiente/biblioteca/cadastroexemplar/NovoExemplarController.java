@@ -1,6 +1,11 @@
 package com.deveficiente.biblioteca.cadastroexemplar;
 
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RestController
 public class NovoExemplarController {
@@ -12,9 +17,12 @@ public class NovoExemplarController {
     O tipo de circulação(restrita ou livre) é obrigatória
 
 	 */
-	
-	public String cria() {
-		
+
+	@PostMapping("/livros/{isbn}/exemplares")
+	public String cria(@PathVariable @RequestBody @Valid NovoExemplarRequest request) {
+		//TODO: process POST request
+
+		return "craindo";
 	}
 	
 }
