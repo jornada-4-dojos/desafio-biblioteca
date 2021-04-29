@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.deveficiente.biblioteca.validator.UniqueValue;
+
 public class NovoLivroRequest {
 
 	@NotBlank
@@ -14,7 +16,7 @@ public class NovoLivroRequest {
 	private BigDecimal preco;
 	
 	@NotBlank
-	//TODO: nao pode ser duplicado
+	@UniqueValue(entity = Livro.class, field = "isbn")
 	private String isbn;
 
 	public NovoLivroRequest(@NotNull String titulo, @NotNull BigDecimal preco, @NotBlank String isbn) {
