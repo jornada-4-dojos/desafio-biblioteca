@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 
 import com.deveficiente.biblioteca.cadastrolivro.Livro;
 import com.deveficiente.biblioteca.validator.ExistsValue;
+import org.springframework.util.Assert;
 
 public class NovoExemplarRequest {
 
@@ -22,6 +23,7 @@ public class NovoExemplarRequest {
 
 	public Exemplar toModel(LivroRepository livroRepository) {
 		var livro = livroRepository.findByIsbn(isbn);
+		Assert.notNull(livro, "Um exemplar não pode ser criado com um livro nulo");
 		return new Exemplar(tipoCirculacao, livro);
 	}
     

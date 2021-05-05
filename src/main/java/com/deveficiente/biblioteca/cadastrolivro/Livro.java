@@ -22,7 +22,11 @@ public class Livro {
         this.preco = preco;
         this.isbn = isbn;
     }
-    
+
+    @Deprecated
+    public Livro() {
+    }
+
     public Long getId() {
     	return id;
     }

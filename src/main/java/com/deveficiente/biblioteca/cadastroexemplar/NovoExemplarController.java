@@ -21,9 +21,10 @@ public class NovoExemplarController {
 
 	@PostMapping("/livros/exemplares")
 	@Transactional
-	public String cria(@RequestBody @Valid NovoExemplarRequest request) {
+	public Long cria(@RequestBody @Valid NovoExemplarRequest request) {
 		Exemplar novoExemplar = request.toModel(livroRepository);
-		return novoExemplar.toString();
+		this.manager.persist(novoExemplar);
+		return novoExemplar.getId();
 	}
 	
 }
