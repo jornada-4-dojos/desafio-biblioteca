@@ -1,7 +1,9 @@
 package com.deveficiente.biblioteca.cadastroexemplar;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+import com.deveficiente.biblioteca.cadastrolivro.Livro;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,10 +20,10 @@ public class NovoExemplarController {
 	 */
 
 	@PostMapping("/livros/exemplares")
+	@Transactional
 	public String cria(@RequestBody @Valid NovoExemplarRequest request) {
-		var novoLivro = request.toModel(); 
-
-		return "craindo";
+		Exemplar novoExemplar = request.toModel();
+		return novoExemplar.toString();
 	}
 	
 }
