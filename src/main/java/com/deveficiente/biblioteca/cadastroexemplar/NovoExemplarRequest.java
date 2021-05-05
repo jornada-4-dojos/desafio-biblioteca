@@ -1,10 +1,10 @@
 package com.deveficiente.biblioteca.cadastroexemplar;
 
-import com.deveficiente.biblioteca.cadastrolivro.Livro;
-import com.deveficiente.biblioteca.validator.ExistsValue;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.deveficiente.biblioteca.cadastrolivro.Livro;
+import com.deveficiente.biblioteca.validator.ExistsValue;
 
 public class NovoExemplarRequest {
 
@@ -20,8 +20,9 @@ public class NovoExemplarRequest {
 		this.isbn = isbn;
 	}
 
-	public Exemplar toModel() {
-		return new Exemplar(tipoCirculacao, isbn);
+	public Exemplar toModel(LivroRepository livroRepository) {
+		var livro = livroRepository.findByIsbn(isbn);
+		return new Exemplar(tipoCirculacao, livro);
 	}
     
 }

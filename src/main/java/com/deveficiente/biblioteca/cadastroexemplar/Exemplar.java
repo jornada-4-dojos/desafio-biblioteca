@@ -5,19 +5,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.deveficiente.biblioteca.cadastrolivro.Livro;
+
 @Entity
 public class Exemplar {
 
 	private final TipoCirculacao tipoCirculacao;
-	private final String isbn;
+	private final Livro livro;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 
-	public Exemplar(TipoCirculacao tipoCirculacao, String isbn) {
+	public Exemplar(TipoCirculacao tipoCirculacao, Livro livro) {
 		this.tipoCirculacao = tipoCirculacao;
-		this.isbn = isbn;
+		this.livro = livro;
 	}
 }

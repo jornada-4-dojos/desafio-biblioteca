@@ -1,9 +1,11 @@
 package com.deveficiente.biblioteca.cadastroexemplar;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
-import com.deveficiente.biblioteca.cadastrolivro.Livro;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,18 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class NovoExemplarController {
 
-	/*
-	 * 
-    O ISBN do livro que vai ter o exemplar cadastrado é obrigatório
-    O ISBN deve existir no sistema
-    O tipo de circulação(restrita ou livre) é obrigatória
+	@Autowired
+	private LivroRepository livroRepository;
 
-	 */
+	@PersistenceContext
+	private EntityManager manager;
 
 	@PostMapping("/livros/exemplares")
 	@Transactional
 	public String cria(@RequestBody @Valid NovoExemplarRequest request) {
-		Exemplar novoExemplar = request.toModel();
+		Exemplar novoExemplar = request.toModel(livroRepository);
 		return novoExemplar.toString();
 	}
 	
