@@ -47,4 +47,12 @@ public class EmprestimoRequest {
 	public Emprestimo toModel(EntityManager entityManager) {
 		Livro livro = entityManager.createQuery("from ");
 	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public Integer getDias() {
+		return dias;
+	}
 }
