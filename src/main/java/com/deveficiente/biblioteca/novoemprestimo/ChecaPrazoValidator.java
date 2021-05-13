@@ -27,7 +27,7 @@ public class ChecaPrazoValidator implements Validator {
         Usuario usuario = entityManager.find(Usuario.class, request.getIdUsuario());
 
         if (!usuario.getTipoUsuario().prazoValido(request.getDias())) {
-            errors.rejectValue("dias", "campo 'dias' precisa estar preenchido para usuário padrão");
+            errors.rejectValue("dias", "campo 'dias' está inválido");
         }
 
     }

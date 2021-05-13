@@ -16,6 +16,10 @@ public class Usuario {
     @NotNull
     private TipoUsuario tipoUsuario;
 
+    @Deprecated
+	public Usuario() {
+	}
+
 	public Usuario(TipoUsuario tipoUsuario) {
 		super();
 		this.tipoUsuario = tipoUsuario;

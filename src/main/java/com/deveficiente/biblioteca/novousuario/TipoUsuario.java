@@ -9,7 +9,7 @@ public enum TipoUsuario {
         	return dias.map(valor -> valor <= 60).orElse(false);
             
         }
-    }, PEQUISADOR {
+    }, PESQUISADOR {
         @Override
         public boolean prazoValido(Optional<Integer> dias) {
         	return dias.map(valor -> valor <= 60).orElse(true);
