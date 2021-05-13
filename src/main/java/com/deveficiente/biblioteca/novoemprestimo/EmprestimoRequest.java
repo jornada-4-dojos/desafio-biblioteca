@@ -1,5 +1,7 @@
 package com.deveficiente.biblioteca.novoemprestimo;
 
+import java.util.Optional;
+
 import javax.persistence.EntityManager;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -45,14 +47,14 @@ public class EmprestimoRequest {
 	}
 
 	public Emprestimo toModel(EntityManager entityManager) {
-		Livro livro = entityManager.createQuery("from ");
+		return null;
 	}
 
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
 
-	public Integer getDias() {
-		return dias;
+	public Optional<Integer> getDias() {
+		return Optional.ofNullable(dias);
 	}
 }
