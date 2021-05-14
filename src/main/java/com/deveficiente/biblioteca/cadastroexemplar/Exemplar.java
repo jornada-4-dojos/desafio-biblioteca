@@ -12,14 +12,18 @@ import com.deveficiente.biblioteca.cadastrolivro.Livro;
 @Entity
 public class Exemplar {
 
-	private final TipoCirculacao tipoCirculacao;
+	private TipoCirculacao tipoCirculacao;
 
 	@ManyToOne
-	private final Livro livro;
+	private Livro livro;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Deprecated
+	public Exemplar() {
+	}
 
 	public Exemplar(@NotNull TipoCirculacao tipoCirculacao, @NotNull Livro livro) {
 		this.tipoCirculacao = tipoCirculacao;
@@ -29,4 +33,17 @@ public class Exemplar {
 	public Long getId() {
 		return id;
 	}
+
+	public TipoCirculacao getTipoCirculacao() {
+		return tipoCirculacao;
+	}
+
+	public boolean mesmaCirculacao(TipoCirculacao tipoCirculacao) {
+		return this.tipoCirculacao.equals(tipoCirculacao);
+	}
+
+	public boolean estaDisponivel(){
+		return true;
+	}
+
 }

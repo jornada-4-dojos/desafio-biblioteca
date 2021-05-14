@@ -21,9 +21,12 @@ public class NovoEmprestimoController {
 	@Autowired
 	private ChecaPrazoValidator checaPrazoValidator;
 
+	@Autowired
+	private ChecaDisponibilidadeLivroValidator checaDisponibilidadeLivroValidator;
+
 	@InitBinder
 	public void init(WebDataBinder binder) {
-		binder.addValidators(this.checaPrazoValidator);
+		binder.addValidators(this.checaPrazoValidator, this.checaDisponibilidadeLivroValidator);
 	}
 
 	@PostMapping("/emprestimos")

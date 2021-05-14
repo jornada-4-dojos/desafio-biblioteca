@@ -32,6 +32,9 @@ public class ChecaDisponibilidadeLivroValidator implements Validator {
         
         boolean temExemplarDisponivel = livro.temExemplarDisponivel(request.getTipoCirculacao());
 
+        if (!temExemplarDisponivel) {
+            errors.rejectValue("tipoCirculacao", null, "Não há um exemplar desse tipo disponível para empréstimo");
+        }
 
     }
 }

@@ -22,8 +22,9 @@ public class Livro {
     private String titulo;
     private String isbn;
     private BigDecimal preco;
+
     @OneToMany(mappedBy = "livro")
-    private List<Exemplar> exemplates = new ArrayList<Exemplar>();
+    private List<Exemplar> exemplares = new ArrayList<>();
 
     public Livro(String titulo, BigDecimal preco, String isbn) {
         this.titulo = titulo;
@@ -40,6 +41,7 @@ public class Livro {
     }
 
 	public boolean temExemplarDisponivel(TipoCirculacao tipoCirculacao) {
-		return false;
+		return this.exemplares.stream()
+                .anyMatch(exemplar -> exemplar.mesmaCirculacao(tipoCirculacao)  && exemplar.estaDisponivel());
 	}
 }
