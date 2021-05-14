@@ -57,4 +57,12 @@ public class EmprestimoRequest {
 	public Optional<Integer> getDias() {
 		return Optional.ofNullable(dias);
 	}
+
+	public Long getIdLivro() {
+		return idLivro;
+	}
+
+	public TipoCirculacao getTipoCirculacao() {
+		return tipoCirculacao;
+	}
 }

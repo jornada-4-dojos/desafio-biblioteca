@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import com.deveficiente.biblioteca.cadastrolivro.Livro;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -23,8 +25,12 @@ public class ChecaDisponibilidadeLivroValidator implements Validator {
         if (errors.hasErrors()) {
             return;
         }
-
+        
         EmprestimoRequest request = (EmprestimoRequest) o;
+        
+        var livro = entityManager.find(Livro.class, request.getIdLivro());
+        
+        boolean temExemplarDisponivel = livro.temExemplarDisponivel(request.getTipoCirculacao());
 
 
     }
